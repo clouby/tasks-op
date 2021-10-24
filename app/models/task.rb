@@ -10,6 +10,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  owner_id    :bigint           not null
+#  code        :string
 #
 class Task < ApplicationRecord
   belongs_to :category
@@ -17,6 +18,7 @@ class Task < ApplicationRecord
 
   has_many :participating_users, class_name: 'Participant'
   has_many :participants, through: :participating_users, source: :user
+  has_many :notes
 
   validates :participating_users, presence: true
   validates :name, :description, presence: true
